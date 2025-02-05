@@ -27,4 +27,4 @@ The Flask application was deployed on render.com:
 **Analysis Report on Crop Recommendation:**
 ![Report](/static/Report-image.png)
 
-**Here is the link for the website**: [https://crop-recommendation-system-app.onrender.com](https://crop-recommendation-system-app.onrender.com)
+**Here is the link for the website**: 
