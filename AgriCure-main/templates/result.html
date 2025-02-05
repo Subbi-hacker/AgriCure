@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCure - Crop Recommendation Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo-image.jpg') }}" alt="AgriCure Logo" width="150">
+        </div>
+        <div class="container">
+            <div class="branding">
+                <h1>Crop Recommendation Result</h1>
+                <p>Welcome to AgriCure!</p>
+            </div>
+            <div class="logout-btn">
+                <a href="/logout" class="logout-link">Logout</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="contain">
+            <section id="result">
+                <h2>Recommended Crop</h2>
+                <p><i><strong>{{ result | safe }}</strong></i></p>
+                
+                <!-- Display the image of the recommended crop -->
+                {% if prediction %}
+                    <div class="crop-image">
+                        <img src="{{ url_for('static', filename=image_path) }}" alt="Image of {{ prediction }}" width="300" height="auto">
+                    </div>
+                {% endif %}
+                
+                <p>We suggest the above crop as the most appropriate one for your inputs.</p>
+                <p>Thank you for trusting AgriCure to recommend the best crop for you!</p>
+            </section>
+            
+            <!-- Links to navigate back and learn more -->
+            <div class="navigation-links">
+                <a href="{{ url_for('home') }}">Go Back</a><br>
+                <a href="{{ url_for('details') }}">Want to know more about the recommended crop? Click here!</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCure</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='purchase_style.css') }}">
+    <style>
+        #thank-you-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+    <script>
+        function proceedToCheckout() {
+            window.open('https://www.amazon.in/s?k=best+agriculture+tools&adgrpid=61872899906&ext_vrnc=hi&hvadid=714702923466&hvdev=c&hvlocphy=9062136&hvnetw=g&hvqmt=b&hvrand=9443484886478243993&hvtargid=kwd-359161537109&hydadcr=24540_2401831&tag=googinhydr1-21&ref=pd_sl_1mma42fxl7_b', '_blank');
+            document.getElementById('thank-you-message').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo-image.jpg') }}" alt="logo">
+        </div>
+        <div class="branding">
+            <h1>AgriCure</h1>
+        </div>
+        <div class="logout-btn">
+            <a href="/logout" class="logout-link">Logout</a>
+        </div>
+    </header>
+
+    <main class="purchase-container">
+        <div class="purchase-card">
+            <a href="{{ url_for('home') }}">Go Back</a>
+            <h1>Purchase Tools</h1>
+            <p>You're purchasing essential tools for your farming needs.</p>
+            <p>Click the link below to proceed to the checkout and purchase tools:</p>
+            <button onclick="proceedToCheckout()" class="checkout-btn">Proceed to Checkout</button>
+            <p id="thank-you-message">You have proceeded to checkout. Thank you for your purchase!</p>
+        </div>
+    </main>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCure</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class = "logo">
+            <img src="{{ url_for('static', filename='logo-image.jpg') }}" alt="logo">
+        </div>
+        <div class="container">
+            <div class="branding">
+                <h1>Fertilizer Recommendation Result</h1>
+                <p>Welcome to AgriCure!</p>
+                
+            </div>
+            <div class="logout-btn">
+                <a href="/logout" class="logout-link">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="contain">
+            <section id="result">
+                <h2>Recommended Fertilizer</h2>
+                <p><i><strong>{{ result | safe }}</strong></i></p>
+                {% if prediction %}
+                    <div class="fertilizer-image">
+                        <img src="{{ url_for('static', filename=image_path) }}" alt="Image of {{ prediction2 }}" width="300" height="auto">
+                    </div>
+            {% endif %}
+                <p>We suggest you the above fertilizer as the most appropriate one for your crop type and soil type.</p>
+                <p>Thank you for letting us choose the best for you !!!</p>
+            </section>
+            <a href="{{ url_for('home') }}" >Go Back</a>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

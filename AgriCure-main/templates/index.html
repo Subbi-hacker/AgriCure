@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCure</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo-image.jpg') }}" alt="logo">        
+        </div>
+        <div class="container">
+            <div class="branding">
+                <h1>AgriCure</h1>
+                <p>Welcome, {{ user_name }}!</p>
+            </div>
+            <div class="logout-btn">
+                <a href="/logout" class="logout-link">Logout</a>
+            </div>
+        </div>
+        <div class="nav-bar" id="navBar">
+            <span class="close-btn" onclick="toggleNav()">&#10095;</span> 
+            <ul>
+                <li><a href="#home" class="tab-link active" data-tab="home">Home</a></li>
+                <li><a href="#recommendations" class="tab-link" data-tab="recommendations">Crop Recommendations</a></li>
+                <li><a href="#fertirecommendations" class="tab-link" data-tab="fertirecommendations">Fertilizer Recommendations</a></li>
+                <li><a href="#pestdetection" class="tab-link" data-tab="pestdetection">Pest Detection</a></li>
+                <li><a href="#crop-disease-detection" class="tab-link" data-tab="crop-disease-detection">Crop Disease Detection</a></li>
+                <li><a href="#purchase" class="tab-link" data-tab="purchase">Purchase</a></li> 
+                <li><a href="#about" class="tab-link" data-tab="about">About</a></li>
+                <li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
+                
+            </ul>
+        </div>
+        
+    </header>
+    <main>
+        <div class="container">
+            <section id="home" class="tab-content active">
+                <h2>Home</h2>
+                <div class="hover-section">
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/rice.jpg') }}" alt="Rice">
+                        <div class="crop-details">
+                            <h3>Rice</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Rice</h3>
+                            <p>Rice is a staple food for over half of the world's population.</p>
+                            <p>It requires high rainfall and humid conditions.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/maize.jpg') }}" alt="Wheat">
+                        <div class="crop-details">
+                            <h3>Maize</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Maize</h3>
+                            <p>Maize is a versatile crop grown worldwide.</p>
+                            <p>It thrives in warm climates with moderate rainfall.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/chickpea.jpg') }}" alt="Chickpea">
+                        <div class="crop-details">
+                            <h3>Chickpea</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Chickpea</h3>
+                            <p>Chickpeas are rich in protein and fiber.</p>
+                            <p>They prefer cooler climates with moderate rainfall.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/kidneybeans.jpg') }}" alt="Kidney Beans">
+                        <div class="crop-details">
+                            <h3>Kidney Beans</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Kidney Beans</h3>
+                            <p>Kidney beans are a popular legume rich in nutrients.</p>
+                            <p>They thrive in warm, well-drained soils.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/pigeonpeas.jpg') }}" alt="Pigeon Peas">
+                        <div class="crop-details">
+                            <h3>Pigeon Peas</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Pigeon Peas</h3>
+                            <p>Pigeon peas are drought-resistant and rich in protein.</p>
+                            <p>They are ideal for tropical and subtropical regions.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/mothbeans.jpg') }}" alt="Moth Beans">
+                        <div class="crop-details">
+                            <h3>Moth Beans</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Moth Beans</h3>
+                            <p>Moth beans are highly drought-tolerant.</p>
+                            <p>They grow well in arid and semi-arid regions.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/mungbean.jpg') }}" alt="Mung Bean">
+                        <div class="crop-details">
+                            <h3>Mung Bean</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Mung Bean</h3>
+                            <p>Mung beans are known for their quick growth cycle.</p>
+                            <p>They require warm temperatures and adequate moisture.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/blackgram.jpg') }}" alt="Black Gram">
+                        <div class="crop-details">
+                            <h3>Black Gram</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Black Gram</h3>
+                            <p>Black gram is a popular pulse crop in South Asia.</p>
+                            <p>It grows well in loamy and sandy soils.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/lentil.jpg') }}" alt="Lentil">
+                        <div class="crop-details">
+                            <h3>Lentil</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Lentil</h3>
+                            <p>Lentils are highly nutritious and easy to cook.</p>
+                            <p>They prefer cooler climates and well-drained soils.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/pomegranate.jpg') }}" alt="Pomegranate">
+                        <div class="crop-details">
+                            <h3>Pomegranate</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Pomegranate</h3>
+                            <p>Pomegranates are rich in antioxidants and vitamins.</p>
+                            <p>They thrive in hot, dry climates.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/banana.jpg') }}" alt="Banana">
+                        <div class="crop-details">
+                            <h3>Banana</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Banana</h3>
+                            <p>Bananas are a tropical fruit rich in potassium.</p>
+                            <p>They require warm, humid conditions.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/mango.jpg') }}" alt="Mango">
+                        <div class="crop-details">
+                            <h3>Mango</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Mango</h3>
+                            <p>Mangoes are known as the king of fruits.</p>
+                            <p>They grow well in tropical and subtropical climates.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/grapes.jpg') }}" alt="Grapes">
+                        <div class="crop-details">
+                            <h3>Grapes</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Grapes</h3>
+                            <p>Grapes are used for making wine and juices.</p>
+                            <p>They prefer warm, temperate climates.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/watermelon.jpg') }}" alt="Watermelon">
+                        <div class="crop-details">
+                            <h3>Watermelon</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Watermelon</h3>
+                            <p>Watermelons are refreshing and hydrating fruits.</p>
+                            <p>They thrive in warm climates with adequate water.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/muskmelon.jpg') }}" alt="Muskmelon">
+                        <div class="crop-details">
+                            <h3>Muskmelon</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Muskmelon</h3>
+                            <p>Muskmelons are sweet and aromatic fruits.</p>
+                            <p>They prefer warm temperatures and sandy soils.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/apple.jpg') }}" alt="Apple">
+                        <div class="crop-details">
+                            <h3>Apple</h3>
+                        </div> 
+                        <div class="crop-info">
+                            <h3>Apple</h3>
+                            <p>Apples are a popular fruit rich in fiber.</p>
+                            <p>They thrive in temperate climates.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/orange.jpg') }}" alt="Orange">
+                        <div class="crop-details">
+                            <h3>Orange</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Orange</h3>
+                            <p>Oranges are a citrus fruit rich in vitamin C.</p>
+                            <p>They grow well in subtropical climates.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/papaya.jpg') }}" alt="Papaya">
+                        <div class="crop-details">
+                            <h3>Papaya</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Papaya</h3>
+                            <p>Papayas are tropical fruits rich in enzymes.</p>
+                            <p>They require warm, sunny conditions.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/coconut.jpg') }}" alt="Coconut">
+                        <div class="crop-details">
+                            <h3>Coconut</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Coconut</h3>
+                            <p>Coconuts are versatile fruits used in many products.</p>
+                            <p>They thrive in coastal tropical regions.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/cotton.jpg') }}" alt="Cotton">
+                        <div class="crop-details">
+                            <h3>Cotton</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Cotton</h3>
+                            <p>Cotton is a key raw material for textiles.</p>
+                            <p>It requires warm weather and ample sunlight.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/jute.jpg') }}" alt="Jute">
+                        <div class="crop-details">
+                            <h3>Jute</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Jute</h3>
+                            <p>Jute is a natural fiber used for making ropes.</p>
+                            <p>It grows well in warm, humid climates.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/coffee.jpg') }}" alt="Coffee">
+                        <div class="crop-details">
+                            <h3>Coffee</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Coffee</h3>
+                            <p>Coffee is a popular beverage crop.</p>
+                            <p>It thrives in tropical climates with ample rainfall.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/sugarcane.jpg') }}" alt="Sugarcane">
+                        <div class="crop-details">
+                            <h3>Sugarcane</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Sugarcane</h3>
+                            <p>Sugarcane is a major source of sugar and ethanol.</p>
+                            <p>It grows well in tropical regions with high rainfall and sunshine.</p>
+                        </div>
+                    </div>
+                    <div class="crop-card">
+                        <img src="{{ url_for('static', filename='images/tobacco.jpg') }}" alt="Tobacco">
+                        <div class="crop-details">
+                            <h3>Tobacco</h3>
+                        </div>
+                        <div class="crop-info">
+                            <h3>Tobacco</h3>
+                            <p>Tobacco is a significant commercial crop used in the production of cigarettes.</p>
+                            <p>It requires a warm climate and well-drained soil.</p>
+                        </div>
+                    </div>            
+                </div>               
+                </div>
+                    
+            </section>
+
+            <section id="recommendations" class="tab-content">
+                <h2>Crop Recommendation</h2>
+                <section id="showcase">
+                    <h1>Find the Best Crops for Your Land</h1>
+                    <p>Input your soil data and get recommendations for the best crops to grow.</p>
+                </section>
+                <section id="input-form">
+                    <h2>Enter the necessary details so that we can provide you with the best crop :) !!</h2>
+                    <form method="POST" action="{{ url_for('result') }}">
+                        <div class="form-group">
+                            <label for="nitrogen">Nitrogen Content:</label>
+                            <input type="number" id="nitrogen" name="nitrogen" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phosphorus">Phosphorus Content:</label>
+                            <input type="number" id="phosphorus" name="phosphorus" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="potassium">Potassium Content:</label>
+                            <input type="number" id="potassium" name="potassium" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="temperature">Average Temperature (°C):</label>
+                            <input type="number" id="temperature" name="temperature" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="humidity">Humidity:</label>
+                            <input type="number" id="humidity" name="humidity" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ph">pH on a scale 14:</label>
+                            <input type="number" id="ph" name="ph" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rainfall">Rainfall in (mm):</label>
+                            <input type="number" id="rainfall" name="rainfall" step="any" required>
+                        </div>
+                        <input type="submit" value="Get Recommendations">
+                    </form>
+                </section>
+            </section>
+
+            <section id="fertirecommendations" class="tab-content">
+                <h2>Fertilizer Recommendation</h2>
+                <section id="showcase">
+    <h1>Find the Best Fertilizer for Your Crop</h1>
+    <p>Input your soil data and get recommendations for the best fertilizers to use.</p>
+    <p>Follow the below <i>MENU</i> for the Soil Type and Crop Type Fields:</p>
+      <table>
+        <tr>
+            <th>Crop Type</th>
+            <th>Field Value</th>
+        </tr>
+        <tr>
+            <td>Barley</td>
+            <td>0</td>
+          </tr>
+           <tr>
+              <td>Cotton</td>
+              <td>1</td>
+           </tr>
+            <tr>
+               <td>Ground Nuts</td>
+                <td>2</td>
+            </tr>
+             <tr>
+               <td>Maize</td>
+                <td>3</td>
+             </tr>
+              <tr>
+               <td>Millets</td>
+               <td>4</td>
+             </tr>
+              <tr>
+               <td>Oil seeds</td>
+                <td>5</td>
+              </tr>
+               <tr>
+                 <td>Paddy</td>
+                 <td>6</td>
+               </tr>
+                <tr>
+                <td>Pulses</td>
+                <td>7</td>
+               </tr>
+                <tr>
+                 <td>Sugarcane</td>
+                  <td>8</td>
+                </tr>
+                 <tr>
+                  <td>Tobacco</td>
+                    <td>9</td>
+                 </tr>
+                  <tr>
+                   <td>Wheat</td>
+                   <td>10</td>
+                  </tr>
+             </table>
+              <table>
+                   <tr>
+                   <th>Soil Type</th>
+                   <th>Field Value</th>
+                   </tr>
+                   <tr>
+                    <td>Black</td>
+                     <td>0</td>
+                   </tr>
+                    <tr>
+                      <td>Clayey</td>
+                       <td>1</td>
+                    </tr>
+                     <tr>
+                      <td>Loamy</td>
+                       <td>2</td>
+                      </tr>
+                      <tr>
+                       <td>Red</td>
+                        <td>3</td>
+                      </tr>
+                       <tr>
+                        <td>Sandy</td>
+                        <td>4</td>
+                       </tr>
+                    </table>
+                </section>
+                <section id="input-form">
+                    <h2>Enter the necessary details so that we can provide you with the best fertilizer :) !!</h2>
+                    <form method="POST" action="{{ url_for('result2') }}">
+                        <div class="form-group">
+                            <label for="temp">Temperature :</label>
+                            <input type="number" id="temp" name="temp" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="humid">Humidity :</label>
+                            <input type="number" id="humid" name="humid" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="moisture">Moisture :</label>
+                            <input type="number" id="moisture" name="moisture" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nitro">Nitrogen :</label>
+                            <input type="number" id="nitro" name="nitro"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="potash">Potassium :</label>
+                            <input type="number" id="potash" name="potash"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phospho">Phosphorus :</label>
+                            <input type="number" id="phospho" name="phospho"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="soil">Soil Type :</label>
+                            <input type="number" id="soil" name="soil"  required>
+                        </div>
+                        <div class="form-group">
+                            <label for="crop">Crop Type :</label>
+                            <input type="number" id="crop" name="crop"  required>
+                        </div>
+                        <input type="submit" value="Get Recommendations">
+                    </form>
+                </section>
+            </section>
+            <!-- Pest Detection Section -->
+            <section id="pestdetection" class="tab-content">
+                <h2>Pest Detection</h2>
+                <section id="showcase">
+                    <h1>Upload an Image for Pest Detection</h1>
+                    <p>Upload an image of a pest to identify it and get recommendations.</p>
+                </section>
+                <section id="input-form"><!--
+                    <h2>Select an image to detect the pest:</h2>
+                    <form method="POST" action="{{ url_for('upload_image') }}" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="file">Choose Image:</label>
+                            <input type="file" id="file" name="file" accept="image/*" required>
+                        </div>
+                        <input type="submit" value="Detect Pest">
+                    </form>-->
+                    <h1>Pest Detection</h1>
+                    <form action="{{ url_for('upload_image') }}" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file" required>
+                        <button type="submit">Upload and Predict</button>
+                    </form>
+                </section>
+            </section>
+
+            <section id="crop-disease-detection" class="tab-content">
+                <h2>Crop Disease Detection</h2>
+                <section id="showcase">
+                    <h1>Upload an Image to detect if it is affected by a disease.</h1>
+                    <p>Upload an image of a crop to diagnose it.</p>
+                </section>
+                <section id="input-form">
+                <form method="POST" action="/upload_crop_image" enctype="multipart/form-data">
+                    <div class="file-upload">
+                        <label for="file">Upload Crop Image:</label>
+                        <input type="file" id="file" name="file" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn-submit">Detect Disease</button>
+                    </div>
+                </form>
+            </section>
+            </section>
+            
+            <!-- Purchase Section -->
+            <section id="purchase" class="tab-content">
+                <h2>Purchase Seeds, Fertilizers, and More</h2>
+                <div class="product-container">
+                    <div class="product-card">
+                        <img src="{{ url_for('static', filename='images/seeds.jpg') }}" alt="Seeds">
+                        <div class="product-details">
+                            <h3>Seeds</h3>
+                            <p>High-quality seeds for optimal yield.</p>
+                            <a href="/purchase-seeds" class="buy-btn">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="{{ url_for('static', filename='images/fertilizer.jpeg') }}" alt="Fertilizers">
+                        <div class="product-details">
+                            <h3>Fertilizers</h3>
+                            <p>Best fertilizers to boost crop growth.</p>
+                            <a href="/purchase-fertilizers" class="buy-btn">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="{{ url_for('static', filename='images/agricultural-tools.jpg') }}" alt="Tools">
+                        <div class="product-details">
+                            <h3>Farming Tools</h3>
+                            <p>Essential tools for efficient farming.</p>
+                            <a href="/purchase-tools" class="buy-btn">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="tab-content">
+                <h2>About</h2>
+                <h3>Welcome to the Crop Recommendation System, your ultimate guide to smarter farming!</h3>
+                <p>Our Crop Recommendation System aims to provide the best results to its farmers by receiving some of the basic inputs like nitogren, phosphorus and potassium contents followed by temperature, humidity, pH and rainfall details. </p>
+                <p>Our mission is to empower farmers and agriculturists with the knowledge and tools they need to make informed decisions about what crops to plant. By analyzing soil data, weather patterns, and other crucial factors, our system provides personalized crop recommendations tailored to your specific land conditions.</p>
+                <p>With our advanced AI and machine learning algorithms, we take the guesswork out of farming. Whether you’re a seasoned farmer looking to optimize your yield or a new farmer wanting to start off on the right foot, our system is designed to help you grow the best crops for your soil.</p>
+                <p>Apart from just recommending the suitable crops, we also recommend the suitable fertilizers to bring the best for the farmers.</p>
+                <p>Join the future of agriculture with our easy-to-use interface and expert advice. Let’s cultivate a prosperous and sustainable farming future together!</p>
+            </section>
+
+            <section id="contact" class="tab-content">
+                <h2>Contact</h2>
+                <p>Get in touch with us for more information or support.</p>
+                <p><strong>Phone:</strong> +91 9381481266</p>
+                <p><strong>Email:</strong> aarathisree.1535@gmail.com</p>
+                <p>Your feedback is very valuable to us. Please feel free to give us your suggestions.</p>
+                <h3>Feedback</h3>
+                <form>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="suggestion">Suggestions:</label>
+                    <input type="text" id="suggestion" name="suggestion" rows="4" cols="50" required><br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </section>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

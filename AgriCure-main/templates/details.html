@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriCure</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo-image.jpg') }}" alt="logo">        
+        </div>
+        <div class="container">
+            <div class="branding">
+                <h1>Crop Information</h1>
+                <p>Welcome to AgriCure!</p>
+            </div>
+            <div class="logout-btn">
+                <a href="/logout" class="logout-link">Logout</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="contain">
+            <section id="input-form">
+                <h2>Enter Crop Name</h2>
+                <form method="POST" action="{{ url_for('cropdetails') }}">
+                    <div class="form-group">
+                        <label for="cropname">Crop Name:</label>
+                        <input type="text" id="cropname" name="cropname" required>
+                    </div>
+                    <input type="submit" value="Get Crop Details">
+                </form>
+            </section>
+            {% if crop_image_path %}
+            <div class="crop-image">
+                <img src="{{ url_for('static', filename=crop_image_path) }}" alt="Image of {{ cropname }}" width="300" height="auto">
+            </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
